@@ -17,4 +17,4 @@ const pwaConfig = withPWA({
 // Apply the withPWA function to your nextConfig
 const finalConfig = pwaConfig(nextConfig);
 
-export default finalConfig;
+export default finalConfig; 

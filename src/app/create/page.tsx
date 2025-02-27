@@ -12,7 +12,7 @@ export default function CreatePoll() {
     if (choices.length < 4) setChoices([...choices, ""]);
   };
 
-  const removeChoice = (index) => {
+  const removeChoice = (index: number) => {
     if (choices.length > 2) {
       const newChoices = choices.filter((_, i) => i !== index);
       setChoices(newChoices);
@@ -31,12 +31,19 @@ export default function CreatePoll() {
       const { data, error } = await supabase.from("polls").insert([{ question, choices }]);
       if (error) throw new Error(error.message);
 
+      console.log("Inserted poll data:", data);
+
       alert("Poll created successfully! 🎉");
       setQuestion("");
       setChoices(["", ""]);
     } catch (err) {
-      console.error("Error creating poll:", err);
-      alert(`Failed to create poll: ${err.message}`);
+      if (err instanceof Error) {
+        console.error("Error creating poll:", err);
+        alert(`Failed to create poll: ${err.message}`);
+      } else {
+        console.error("Unexpected error:", err);
+        alert("Failed to create poll: An unexpected error occurred.");
+      }
     } finally {
       setLoading(false);
     }

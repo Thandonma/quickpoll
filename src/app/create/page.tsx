@@ -3,6 +3,9 @@ import { useState } from "react";
 import { supabase } from "@/app/lib/supabase";
 import Navbar from "@/app/components/Navbar";
 
+// ⛔️ Tell Next.js this page must always be rendered dynamically (no static generation at build time)
+export const dynamic = 'force-dynamic';
+
 export default function CreatePoll() {
   const [question, setQuestion] = useState("");
   const [choices, setChoices] = useState(["", ""]);

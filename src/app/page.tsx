@@ -1,10 +1,11 @@
-import Navbar from "@/app/components/Navbar";
+
 import Link from "next/link";
+import RecentPolls from "@/app/components/RecentPolls";
 
 export default function Home() {
   return (
     <div className="min-h-screen bg-gray-100">
-      <Navbar />
+      
 
       {/* Hero Section */}
       <div className="flex flex-col items-center justify-center text-center py-20 px-6">
@@ -27,6 +28,11 @@ export default function Home() {
             </button>
           </Link>
         </div>
+      </div>
+
+      {/* Recent Polls Section */}
+      <div className="mt-10">
+        <RecentPolls />
       </div>
     </div>
   );
